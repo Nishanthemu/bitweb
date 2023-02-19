@@ -1,0 +1,17 @@
+select display(16) from student;
+
+-- function
+delimiter $$
+create function display(id int)
+returns varchar(50)
+deterministic
+begin
+	declare sal varchar(30);
+    select concat(name,' your mark : ',mark) into sal
+    from student
+    where rollno=id;
+    return sal;
+end $$
+delimiter ;
+
+drop function display;
